@@ -1,5 +1,5 @@
 {
-    "name": "ngx-joyride",
+    "name": "@boxmeglobal/ngx-joyride",
     "version": "2.2.11",
     "description": "Angular Joyride/Tour Library",
     "main": "./bundles/ngx-joyride.umd.js",
@@ -7,10 +7,10 @@
     "module": "./esm5/ngx-joyride.esm.js",
     "es2015": "./esm2015/ngx-joyride.esm2015.js",
     "typings": "./joyride.d.ts",
-    "author": "Nicola Tommasi",
+    "author": "Hung Cung",
     "repository": {
         "type": "git",
-        "url": "https://github.com/tnicola/ngx-joyride"
+        "url": "https://github.com/Boxme-Global/ngx-joyride"
     },
     "license": "MIT",
     "keywords": [
