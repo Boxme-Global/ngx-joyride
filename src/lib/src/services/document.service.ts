@@ -80,6 +80,33 @@ export class DocumentService implements IDocumentService {
         return 3;
     }
 
+    calcHeightElementOverlap(elementRef: ElementRef, keywordToDiscard: string): number {
+        const x1 = this.getElementFixedLeft(elementRef);
+        const y1 = this.getElementFixedTop(elementRef);
+
+        const elements1 = this.DOMService.getNativeDocument().elementsFromPoint(x1, y1);
+
+        const otherEle = this.getFirstElementWithoutKeyword(elements1, keywordToDiscard);
+        if (otherEle !== elementRef.nativeElement) {
+            return -300;
+        }
+        return 0
+    }
+
+    calcHeightStepOverlap(top: number, left: number, keywordToDiscard: string): number {
+        let currentScrollPos = this.getScrollOffsets()
+        const x1 = left - currentScrollPos.x;
+        const y1 = top - currentScrollPos.y;
+
+        const elements1 = this.DOMService.getNativeDocument().elementsFromPoint(x1, y1);
+
+        const otherEle = this.getFirstElementWithoutKeyword(elements1, keywordToDiscard);
+        if (!otherEle.className.includes('joyride-step__holder')) {
+            return -300;
+        }
+        return 0
+    }
+
     scrollIntoView(elementRef: ElementRef, isElementFixed: boolean): void {
         const firstScrollableParent = this.getFirstScrollableParent(elementRef.nativeElement);
         const top = isElementFixed ? this.getElementFixedTop(elementRef) : this.getElementAbsoluteTop(elementRef);

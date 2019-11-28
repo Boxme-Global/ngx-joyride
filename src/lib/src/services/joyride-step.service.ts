@@ -145,7 +145,6 @@ export class JoyrideStepService implements IJoyrideStepService {
 
         if (this.currentStep == null) throw new JoyrideStepDoesNotExist('');
         // Scroll the element to get it visible if it's in a scrollable element
-        this.scrollIfElementBeyondOtherElements();
         this.backDropService.draw(this.currentStep);
         this.drawStep(this.currentStep);
         this.scrollIfStepAndTargetAreNotVisible();
@@ -173,6 +172,15 @@ export class JoyrideStepService implements IJoyrideStepService {
     private scrollIfStepAndTargetAreNotVisible() {
         this.scrollWhenTargetOrStepAreHiddenBottom();
         this.scrollWhenTargetOrStepAreHiddenTop();
+        this.scrollWhenTargetBeOverlap();
+    }
+
+    private scrollWhenTargetBeOverlap() {
+        let res = Math.min(
+            this.documentService.calcHeightElementOverlap(this.currentStep.targetViewContainer.element, 'backdrop'),
+            this.documentService.calcHeightStepOverlap(this.currentStep.stepInstance.topPosition, this.currentStep.stepInstance.leftPosition, 'backdrop')
+        )
+        this.DOMService.getNativeWindow().scrollBy(0, res)
     }
 
     private scrollWhenTargetOrStepAreHiddenBottom() {
