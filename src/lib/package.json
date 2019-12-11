@@ -1,5 +1,5 @@
 {
-    "name": "ngx-joyride",
+    "name": "@boxmeglobal/ngx-joyride",
     "version": "2.2.14-1",
     "description": "Angular Joyride/Tour Library",
     "main": "./bundles/ngx-joyride.umd.js",
@@ -20,7 +20,7 @@
         "directive",
         "demo",
         "ui component",
-        "onboarding", 
+        "onboarding",
         "Angular2"
     ],
     "peerDependencies": {

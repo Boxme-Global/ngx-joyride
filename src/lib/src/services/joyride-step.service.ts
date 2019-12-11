@@ -171,10 +171,8 @@ export class JoyrideStepService implements IJoyrideStepService {
     }
 
     private scrollIfStepAndTargetAreNotVisible() {
-        console.log(`Before_Check_Scroll: top|${this.winTopPosition}---||${this.getMaxTargetAndStepTopPosition()}-${this.getMaxTargetAndStepBottomPosition()}||---${this.winBottomPosition}|bottom`)
         this.scrollWhenTargetOrStepAreHiddenBottom();
         this.scrollWhenTargetOrStepAreHiddenTop();
-        console.log(`After_Check_Scroll: top|${this.winTopPosition}---||${this.getMaxTargetAndStepTopPosition()}-${this.getMaxTargetAndStepBottomPosition()}||---${this.winBottomPosition}|bottom`)
     }
 
     private updateScrollManually() {
@@ -193,7 +191,7 @@ export class JoyrideStepService implements IJoyrideStepService {
     private scrollWhenTargetOrStepAreHiddenTop() {
         let totalTargetTop = this.getMaxTargetAndStepTopPosition();
         if (totalTargetTop < this.winTopPosition) {
-            this.DOMService.getNativeWindow().scrollBy(0, totalTargetTop - this.winTopPosition);
+            this.DOMService.getNativeWindow().scrollBy(0, totalTargetTop - this.winTopPosition - 300);
             this.updateScrollManually();
         }
     }
@@ -235,9 +233,11 @@ export class JoyrideStepService implements IJoyrideStepService {
     private scrollIfElementBeyondOtherElements() {
         if (this.isElementBeyondOthers() === 2) {
             this.documentService.scrollToTheTop(this.currentStep.targetViewContainer.element);
+            this.updateScrollManually();
         }
         if (this.isElementBeyondOthers() === 2) {
             this.documentService.scrollToTheBottom(this.currentStep.targetViewContainer.element);
+            this.updateScrollManually();
         }
         if (this.isElementBeyondOthers() === 1 && this.documentService.isParentScrollable(this.currentStep.targetViewContainer.element)) {
             this.documentService.scrollIntoView(this.currentStep.targetViewContainer.element, this.currentStep.isElementOrAncestorFixed);
