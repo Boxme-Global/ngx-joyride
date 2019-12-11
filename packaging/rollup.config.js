@@ -49,7 +49,7 @@ export default {
         commonjs({
             include: 'node_modules/**'
         }),
-        uglify()
+        // uglify()
     ],
     onwarn: warning => {
         const skip_codes = [

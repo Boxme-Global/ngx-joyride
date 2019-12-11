@@ -171,14 +171,22 @@ export class JoyrideStepService implements IJoyrideStepService {
     }
 
     private scrollIfStepAndTargetAreNotVisible() {
+        console.log(`Before_Check_Scroll: top|${this.winTopPosition}---||${this.getMaxTargetAndStepTopPosition()}-${this.getMaxTargetAndStepBottomPosition()}||---${this.winBottomPosition}|bottom`)
         this.scrollWhenTargetOrStepAreHiddenBottom();
         this.scrollWhenTargetOrStepAreHiddenTop();
+        console.log(`After_Check_Scroll: top|${this.winTopPosition}---||${this.getMaxTargetAndStepTopPosition()}-${this.getMaxTargetAndStepBottomPosition()}||---${this.winBottomPosition}|bottom`)
+    }
+
+    private updateScrollManually() {
+        this.winTopPosition = this.DOMService.getNativeWindow().scrollY;
+        this.winBottomPosition = this.winTopPosition + this.DOMService.getNativeWindow().innerHeight - SCROLLBAR_SIZE;
     }
 
     private scrollWhenTargetOrStepAreHiddenBottom() {
         let totalTargetBottom = this.getMaxTargetAndStepBottomPosition();
         if (totalTargetBottom > this.winBottomPosition) {
             this.DOMService.getNativeWindow().scrollBy(0, totalTargetBottom - this.winBottomPosition);
+            this.updateScrollManually();
         }
     }
 
@@ -186,6 +194,7 @@ export class JoyrideStepService implements IJoyrideStepService {
         let totalTargetTop = this.getMaxTargetAndStepTopPosition();
         if (totalTargetTop < this.winTopPosition) {
             this.DOMService.getNativeWindow().scrollBy(0, totalTargetTop - this.winTopPosition);
+            this.updateScrollManually();
         }
     }
 
