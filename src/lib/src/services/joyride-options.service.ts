@@ -5,6 +5,8 @@ import { of, Observable } from 'rxjs';
 export const DEFAULT_THEME_COLOR = '#3b5560';
 export const STEP_DEFAULT_POSITION = 'bottom';
 export const DEFAULT_TIMEOUT_BETWEEN_STEPS = 1;
+export const DEFAULT_LOGO_URL = '';
+export const DEFAULT_HEADER_CONTENT = '';
 
 export class ObservableCustomTexts implements ICustomTexts {
     prev: Observable<string>;
@@ -44,6 +46,8 @@ export class JoyrideOptionsService implements IJoyrideOptionsService {
     private firstStep: string;
     private waitingTime: number;
     private customTexts: ObservableCustomTexts;
+    private logoURL: string;
+    private headerContent: string;
 
     setOptions(options: JoyrideOptions) {
         this.stepsOrder = options.steps;
@@ -55,6 +59,8 @@ export class JoyrideOptionsService implements IJoyrideOptionsService {
         this.firstStep = options.startWith;
         this.waitingTime = typeof options.waitingTime !== 'undefined' ? options.waitingTime : DEFAULT_TIMEOUT_BETWEEN_STEPS;
         typeof options.customTexts !== 'undefined' ? this.setCustomText(options.customTexts) : this.setCustomText(DEFAULT_TEXTS);
+        this.logoURL = options.logoURL || DEFAULT_LOGO_URL;
+        this.headerContent = options.headerContent || DEFAULT_HEADER_CONTENT;
     }
 
     getBackdropColor() {
@@ -95,6 +101,14 @@ export class JoyrideOptionsService implements IJoyrideOptionsService {
 
     getCustomTexts(): ObservableCustomTexts {
         return this.customTexts;
+    }
+
+    getLogoURL(): string {
+        return this.logoURL;
+    }
+
+    getHeaderContent(): string {
+        return this.headerContent;
     }
 
     private setCustomText(texts: CustomTexts) {

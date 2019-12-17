@@ -28,19 +28,18 @@
         padding: 8px;
     }
     &__title {
-        font-size: 17px;
+        font-size: 15px;
         width: 100%;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        color: rgba(0, 0, 0, 0.6);
     }
     &__close {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        width: 14px;
-        height: 14px;
+        width: 16px;
+        height: 16px;
         cursor: pointer;
+        opacity: 0.6;
     }
     &__body {
         text-align: left;

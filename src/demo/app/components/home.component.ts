@@ -66,7 +66,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
             // themeColor: '#345632',
             showPrevButton: true,
             logsEnabled: true,
-            //customTexts: { prev: of('<<').pipe(delay(2000)), next: '>>'}
+            //customTexts: { prev: of('<<').pipe(delay(2000)), next: '>>'},
+            logoURL: 'http://app.netsale.asia/assets/images/netsale/favicon.png',
+            headerContent: '<strong>Netsale</strong> from Customer Service'
         };
         this.joyrideService.startTour(options).subscribe(
             step => {

@@ -2,10 +2,10 @@
     <joyride-arrow *ngIf="showArrow" class="joyride-step__arrow" [position]="arrowPosition" [style.top.px]="arrowTopPosition"
         [style.left.px]="arrowLeftPosition"></joyride-arrow>
     <div #stepContainer class="joyride-step__container">
-        <joy-close-button class="joyride-step__close" (click)="close()"></joy-close-button>
         <div class="joyride-step__header">
-            <img class="joyride-step__favicon" src="https://shopus.vn/static/images/favicon.png" alt="">
-            <div class="joyride-step__title"><strong>ShopUS</strong> from Customer Service</div>
+            <img class="joyride-step__favicon" [src]="optionsService.getLogoURL()" alt="">
+            <div class="joyride-step__title" [innerHTML]="optionsService.getHeaderContent()"></div>
+            <joy-close-button class="joyride-step__close" (click)="close()"></joy-close-button>
         </div>
         <div class="joyride-step__body">
             <ng-container *ngTemplateOutlet="customContent ? customContent : defaultContent; context: ctx"></ng-container>
