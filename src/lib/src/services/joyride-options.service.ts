@@ -59,8 +59,8 @@ export class JoyrideOptionsService implements IJoyrideOptionsService {
         this.firstStep = options.startWith;
         this.waitingTime = typeof options.waitingTime !== 'undefined' ? options.waitingTime : DEFAULT_TIMEOUT_BETWEEN_STEPS;
         typeof options.customTexts !== 'undefined' ? this.setCustomText(options.customTexts) : this.setCustomText(DEFAULT_TEXTS);
-        this.logoURL = options.logoURL || DEFAULT_LOGO_URL;
-        this.headerContent = options.headerContent || DEFAULT_HEADER_CONTENT;
+        this.logoURL = options.logoURL || this.logoURL || DEFAULT_LOGO_URL;
+        this.headerContent = options.headerContent || this.headerContent || DEFAULT_HEADER_CONTENT;
     }
 
     getBackdropColor() {
