@@ -31,7 +31,8 @@ export const routerModuleForChild: ModuleWithProviders = RouterModule.forChild([
     ],
     entryComponents: [JoyrideStepComponent],
     exports: [
-        JoyrideDirective
+        JoyrideDirective,
+        JoyrideButtonComponent
     ]
 })
 export class JoyrideModule {

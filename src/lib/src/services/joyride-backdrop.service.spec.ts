@@ -46,7 +46,7 @@ describe('JoyrideBackdropService', () => {
             expect(styles.position).toBe('fixed');
             expect(styles.top).toBe('0px');
             expect(styles.left).toBe('0px');
-            expect(styles.getPropertyValue('z-index')).toBe('1000');
+            expect(styles.getPropertyValue('z-index')).toBe('1100');
         });
 
         it('should create a backdrop-content', () => {
