@@ -89,7 +89,7 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
         private readonly documentService: DocumentService,
         private readonly renderer: Renderer2,
         private readonly logger: LoggerService,
-        private readonly optionsService: JoyrideOptionsService,
+        public readonly optionsService: JoyrideOptionsService,
         private readonly templateService: TemplatesService
     ) {}
 
